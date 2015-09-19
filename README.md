@@ -10,7 +10,7 @@ FlarumOne Home entrance that you bind the domain name.
 
 ###参考安装命令
 ```shell
-wget http://res.szlt.net/project/lnmp/lnmp.zip -P /tmp
+wget http://res.szlt.net/master/lnmp/lnmp.zip -P /tmp
 cd /usr/local/src
 unzip /tmp/lnmp.zip
 chmod -R 777 sh && cd sh
