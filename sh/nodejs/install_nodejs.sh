@@ -35,17 +35,26 @@ cd ..
 ####---- install Nodejs ----end####
 
 if [ "$ifsuse" != "" ];then
-	echo 'export PATH=$PATH:/data1/server/nodejs/bin:/usr/local/bin/composer:/root/.composer/vendor/bin' >> /etc/profile.d/profile.sh
+	echo 'export PATH=$PATH:/data1/server/nodejs/bin' >> /etc/profile.d/profile.sh
 	source /etc/profile.d/profile.sh &> /dev/null
 else
-	echo 'export PATH=$PATH:/data1/server/nodejs/bin:/usr/local/bin/composer:/root/.composer/vendor/bin' >> /etc/profile
+	echo 'export PATH=$PATH:/data1/server/nodejs/bin' >> /etc/profile
 	source /etc/profile &> /dev/null
 fi
 
 ####---- install npm ----begin####
-curl https://www.npmjs.com/install.sh | sh
+curl -sS https://www.npmjs.com/install.sh | sh
 npm install --global gulp
+
 rm -rf composer.phar
-curl -sS https://getcomposer.org/installer | php
+curl -sS https://getcomposer.org/installer | /data1/server/php/bin/php
 mv composer.phar /usr/local/bin/composer
+
+if [ "$ifsuse" != "" ];then
+	echo 'export PATH=$PATH:/usr/local/bin/composer:/root/.composer/vendor/bin' >> /etc/profile.d/profile.sh
+	source /etc/profile.d/profile.sh &> /dev/null
+else
+	echo 'export PATH=$PATH:/usr/local/bin/composer:/root/.composer/vendor/bin' >> /etc/profile
+	source /etc/profile &> /dev/null
+fi
 ####---- install npm ----end####

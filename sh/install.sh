@@ -25,7 +25,7 @@ install_log=/data1/website-info.log
 
 ####---- version selection ----begin####
 
-LNMP_Ver='0.1.0-beta1'
+LNMP_Ver='0.1.0-beta2'
 clear
 echo "+---------------------------------------------------------------------------+"
 echo "|         LNMP V${LNMP_Ver} for Linux Server, Written by FlarumOne          |"
@@ -74,11 +74,11 @@ read -p "Please Select whether you want to install NodeJS, input Y or N : " tmp
 if [ "$tmp" == "y" ] || [ "$tmp" == "Y" ];then
   export isNodejs=yes
   tmp=1
-  read -p "Please select the NodeJS version of 0.12.7/4.0.0, input 1 or 2 : " tmp
+  read -p "Please select the NodeJS version of 0.12.7/4.1.1, input 1 or 2 : " tmp
   if [ "$tmp" == "1" ];then
     nodejs_version=0.12.7
   elif [ "$tmp" == "2" ];then
-    nodejs_version=4.0.0
+    nodejs_version=4.1.1
   fi
 elif [ "$tmp" == "n" ] || [ "$tmp" == "N" ];then
   export isNodejs=no
@@ -233,11 +233,6 @@ echo "---------- php extension ok ----------" >> tmp.log
 echo "---------- phpmyadmin-${phpmyadmin_version} ok ----------" >> tmp.log
 echo "---------- web init ok ----------" >> tmp.log
 
-if [ "$isNodejs" == "yes" ];then
-	./nodejs/install_nodejs.sh
-	echo "---------- ${nodejs_dir} ok ----------" >> tmp.log
-fi
-
 ####---- install software ----end####
 
 
@@ -334,6 +329,13 @@ if [ "$isMysql" == "yes" ];then
 	/etc/init.d/mysqld restart &> /dev/null
 fi
 ####---- restart ----end####
+
+####---- nodejs install ---begin####
+if [ "$isNodejs" == "yes" ];then
+	./nodejs/install_nodejs.sh
+	echo "---------- ${nodejs_dir} ok ----------" >> tmp.log
+fi
+####---- nodejs install---end####
 
 ####---- openssl update---begin####
 ./env/update_openssl.sh

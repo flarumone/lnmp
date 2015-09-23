@@ -6,7 +6,7 @@ else
 mysqlCDN=http://cdn.mysql.com/Downloads/MySQL-5.5
 fi
 
-if [ $isChina == "x86_64" ];then
+if [ $machine == "x86_64" ];then
   rm -rf mysql-5.5.45-linux2.6-x86_64
   if [ ! -f mysql-5.5.45-linux2.6-x86_64.tar.gz ];then
 	 wget ${mysqlCDN}/mysql-5.5.45-linux2.6-x86_64.tar.gz
