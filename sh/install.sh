@@ -13,7 +13,6 @@ for app in $(find . -name "*.sh" -exec echo {} \;); do
 done
 
 ####---- global variables ----begin####
-export serverIp=$(curl http://gocc.sinaapp.com/ip.php)
 export nginx_version=2.1.1
 export mysql_version=5.5.45
 export php_version=5.5.29
@@ -34,6 +33,59 @@ echo "| A tool to auto-compile & install Nginx+PHP+MySQL+NodeJS+Composer on Linu
 echo "+---------------------------------------------------------------------------+"
 echo "|         For more information please visit https://flarunone.com           |"
 echo "+---------------------------------------------------------------------------+"
+
+function CheckIPAddress()
+{
+  if [ `echo $1 | awk -F . '{print NF}'` -ne 4 ];then
+    echo "wrong"
+    exit 2
+  else
+    a=`echo $1 | awk -F . '{print $1}'`
+    b=`echo $1 | awk -F . '{print $2}'`
+    c=`echo $1 | awk -F . '{print $3}'`
+    d=`echo $1 | awk -F . '{print $4}'`
+    if [[ $a -gt 0 && $a -le 255 ]] && [[ $b -ge 0 && $b -le 255 ]] && [[ $c -ge 0 && $c -le 255 ]] && [[ $d -gt 0 && $d -lt 255 ]];then
+      echo "right"
+    else
+      echo "wrong"
+    fi
+  fi
+}
+
+isIp=n
+read -p "Enter server IP manually? This maybe useful when you are setting local develop environment up. input Y or N :" isIp
+if [ "${isIp}" == "y" ] || [ "${isIp}" == "Y" ];then
+  read -p "Please input IP for this server:" serverIp
+  if [ "$(CheckIPAddress $serverIp)" == "wrong" ];then
+    read -p "Wrong IP address, try again:" serverIp
+    if [ "$(CheckIPAddress $serverIp)" == "wrong" ];then
+      echo 'Too many errors, please try again.'
+      exit 2
+    else
+      echo "Right!"
+    fi
+  else
+    echo "Right!"
+  fi
+else
+  serverIp=$(curl http://gocc.sinaapp.com/ip.php)
+  if [ "$(CheckIPAddress $serverIp)" == "wrong" ];then
+    read -p "Error when getting server ip, please input IP for this server:" serverIp
+    if [ "$(CheckIPAddress $serverIp)" == "wrong" ];then
+      read -p "Wrong IP address, try again:" serverIp
+      if [ "$(CheckIPAddress $serverIp)" == "wrong" ];then
+        echo 'Too many errors, please try again.'
+        exit 2
+      else
+        echo "Right!"
+      fi
+    else
+      echo "Right!"
+    fi
+  else
+    echo "Right!"
+  fi
+fi
 
 tmp=n
 read -p "Please select your server in mainland China, input Y or N : " tmp
@@ -85,7 +137,8 @@ elif [ "$tmp" == "n" ] || [ "$tmp" == "N" ];then
 fi
 
 echo ""
-echo "You select the version :"
+echo "You select the information :"
+echo "Server IP : $serverIp"
 echo "CDN : $cdnName"
 if [ "${isMysql}" != "yes" ];then
   if [ "${isNodejs}" != "yes" ];then
@@ -127,6 +180,7 @@ else
 fi
 
 ####---- global variables ----begin####
+export serverIp
 export web_dir=nginx-${nginx_version}
 export php_dir=php-${php_version}
 export mysql_dir=mysql-${mysql_version}
