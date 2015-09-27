@@ -8,6 +8,9 @@ if [ $(id -u) != "0" ]; then
     exit 1
 fi
 
+# CPU_NUM
+CPU_NUM=$(cat /proc/cpuinfo | grep processor | wc -l)
+
 # Fix Version
 fix_version=150927a
 jpeg_version=v6b
@@ -18,10 +21,7 @@ old_jpeg_version=${old_jpeg_version/a/}
 old_libpng_version=1.6.18
 old_freetype_version=2.6
 
-# CDN
-cdn=http://res.szlt.net
-CPU_NUM=$(cat /proc/cpuinfo | grep processor | wc -l)
-
+clear
 echo "+---------------------------------------------------------------------------+"
 echo "|     Welcome to FlarumOne LNMP v0.1.0-Beta.1 PHP fix, version: ${fix_version}     |"
 echo "+---------------------------------------------------------------------------+"
@@ -32,6 +32,26 @@ echo "+-------------------------------------------------------------------------
 if [ ! -d "/usr/local/jpeg.${old_jpeg_version/v/}" ] && [ ! -d "/usr/local/freetype.${old_freetype_version}" ] && [ ! -d "/usr/local/jpeg.${old_jpeg_version/v/}" ]; then
     echo "Error: Sorry, you are not an LNMP v0.1.0-Beta.1 user, if you need help, please go to https://flarumone.com/t/lnmp"
     exit 1
+fi
+
+# CDN
+tmp=n
+read -p "Please select your server in mainland China, input Y or N : " tmp
+if [ "$tmp" == "y" ] || [ "$tmp" == "Y" ];then
+  export isChina=yes
+  tmp=1
+  read -p "Please select a CDN node of SinaSAE/AliyunCDN, input 1 or 2 : " tmp
+  if [ "$tmp" == "1" ];then
+    cdnName=SinaSAE
+    export cdn=https://api.sinas3.com/v1/SAE_gocc
+  elif [ "$tmp" == "2" ];then
+    cdnName=AliyunCDN
+    export cdn=http://res.szlt.net
+  fi
+elif [ "$tmp" == "n" ] || [ "$tmp" == "N" ];then
+  cdnName=AWSS3US
+  export isChina=no
+  export cdn=http://s3us.flarumone.com
 fi
 
 # Downgrade PNG
@@ -145,17 +165,17 @@ cd php-5.5.29
 --disable-safe-mode \
 --enable-fileinfo
 if [ $CPU_NUM -gt 1 ];then
-    make -j$CPU_NUM
+    make ZEND_EXTRA_LIBS='-liconv' -j$CPU_NUM
 else
-    make
+    make ZEND_EXTRA_LIBS='-liconv'
 fi
 make install
 cd ..
 echo "----------Recompile PHP Finish!----------" >> tmp_fix_${fix_version}.log
 
-# Print Log
-cat tmp_fix_${fix_version}.log
-
 # Restart PHP and Nginx
 /etc/init.d/php-fpm restart
 /etc/init.d/nginx restart
+
+# Print Log
+cat tmp_fix_${fix_version}.log
