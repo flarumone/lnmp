@@ -13,7 +13,6 @@ fix_version=150927a
 jpeg_version=v6b
 libpng_version=1.2.53
 freetype_version=2.1.10
-imagemagick_version=6.9.2-0
 old_jpeg_version=v9a
 old_jpeg_version=${old_jpeg_version/a/}
 old_libpng_version=1.6.18
@@ -146,31 +145,13 @@ cd php-5.5.29
 --disable-safe-mode \
 --enable-fileinfo
 if [ $CPU_NUM -gt 1 ];then
-    make ZEND_EXTRA_LIBS='-liconv' -j$CPU_NUM
-else
-    make ZEND_EXTRA_LIBS='-liconv'
-fi
-make install
-cd ..
-echo "----------Recompile PHP Finish!----------" >> tmp_fix_${fix_version}.log
-
-# Recompile ImageMagick
-rm -rf /usr/local/imagemagick
-if [ ! -f ImageMagick.tar.gz ];then
-    wget ${cdn}/project/imagemagick/ImageMagick.tar.gz
-fi
-rm -rf ImageMagick-${imagemagick_version}
-tar -xzvf ImageMagick.tar.gz
-cd ImageMagick-${imagemagick_version}
-./configure --prefix=/usr/local/imagemagick
-if [ $CPU_NUM -gt 1 ];then
     make -j$CPU_NUM
 else
     make
 fi
 make install
 cd ..
-echo "----------Recompile ImageMagick Finish!----------" >> tmp_fix_${fix_version}.log
+echo "----------Recompile PHP Finish!----------" >> tmp_fix_${fix_version}.log
 
 # Print Log
 cat tmp_fix_${fix_version}.log
