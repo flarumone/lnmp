@@ -35,13 +35,13 @@ fi
 make install
 cd ..
 
-if [ ! -f freetype-2.6.tar.gz ];then
-	wget ${cdn}/project/freetype/freetype-2.6.tar.gz
+if [ ! -f freetype-2.1.10.tar.gz ];then
+	wget ${cdn}/project/freetype/freetype-2.1.10.tar.gz
 fi
-rm -rf freetype-2.6
-tar zxvf freetype-2.6.tar.gz
-cd freetype-2.6
-./configure --prefix=/usr/local/freetype.2.6
+rm -rf freetype-2.1.10
+tar zxvf freetype-2.1.10.tar.gz
+cd freetype-2.1.10
+./configure --prefix=/usr/local/freetype.2.1.10
 if [ $CPU_NUM -gt 1 ];then
     make -j$CPU_NUM
 else
@@ -50,13 +50,13 @@ fi
 make install
 cd ..
 
-if [ ! -f libpng-1.6.18.tar.gz ];then
-    wget ${cdn}/project/libpng/libpng-1.6.18.tar.gz
+if [ ! -f libpng-1.2.53.tar.gz ];then
+    wget ${cdn}/project/libpng/libpng-1.2.53.tar.gz
 fi
-rm -rf libpng-1.6.18
-tar zxvf libpng-1.6.18.tar.gz
-cd libpng-1.6.18
-./configure --prefix=/usr/local/libpng.1.6.18
+rm -rf libpng-1.2.53
+tar zxvf libpng-1.2.53.tar.gz
+cd libpng-1.2.53
+./configure --prefix=/usr/local/libpng.1.2.53
 if [ $CPU_NUM -gt 1 ];then
     make CFLAGS=-fpic -j$CPU_NUM
 else
@@ -115,12 +115,12 @@ fi
 make install
 cd ..
 
-if [ ! -f jpegsrc.v9a.tar.gz ];then
-	wget ${cdn}/project/jpegsrc/jpegsrc.v9a.tar.gz
+if [ ! -f jpegsrc.v6b.tar.gz ];then
+	wget ${cdn}/project/jpegsrc/jpegsrc.v6b.tar.gz
 fi
-rm -rf jpeg-9a
-tar zxvf jpegsrc.v9a.tar.gz
-cd jpeg-9a
+rm -rf jpeg-6b
+tar zxvf jpegsrc.v6b.tar.gz
+cd jpeg-6b
 if [ -e /usr/share/libtool/config.guess ];then
 cp -f /usr/share/libtool/config.guess .
 elif [ -e /usr/share/libtool/config/config.guess ];then
@@ -131,11 +131,11 @@ cp -f /usr/share/libtool/config.sub .
 elif [ -e /usr/share/libtool/config/config.sub ];then
 cp -f /usr/share/libtool/config/config.sub .
 fi
-./configure --prefix=/usr/local/jpeg.9 --enable-shared --enable-static
-mkdir -p /usr/local/jpeg.9/include
-mkdir /usr/local/jpeg.9/lib
-mkdir /usr/local/jpeg.9/bin
-mkdir -p /usr/local/jpeg.9/man/man1
+./configure --prefix=/usr/local/jpeg.6 --enable-shared --enable-static
+mkdir -p /usr/local/jpeg.6b/include
+mkdir /usr/local/jpeg.6b/lib
+mkdir /usr/local/jpeg.6b/bin
+mkdir -p /usr/local/jpeg.6b/man/man1
 if [ $CPU_NUM -gt 1 ];then
     make -j$CPU_NUM
 else

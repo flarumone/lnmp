@@ -24,10 +24,10 @@ install_log=/data1/website-info.log
 
 ####---- version selection ----begin####
 
-LNMP_Ver='0.1.0-beta1'
+LNMP_Ver='0.1.0-Beta.2'
 clear
 echo "+---------------------------------------------------------------------------+"
-echo "|         LNMP V${LNMP_Ver} for Linux Server, Written by FlarumOne          |"
+echo "|        LNMP V${LNMP_Ver} for Linux Server, Written by FlarumOne          |"
 echo "+---------------------------------------------------------------------------+"
 echo "| A tool to auto-compile & install Nginx+PHP+MySQL+NodeJS+Composer on Linux |"
 echo "+---------------------------------------------------------------------------+"

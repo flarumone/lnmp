@@ -56,7 +56,21 @@ cd ..
 echo "extension=memcache.so" >> /data1/server/php/etc/php.ini
 
 #zend
-mkdir -p /data1/server/php/lib/php/extensions/no-debug-non-zts-20121212/
+mkdir -p /alidata/server/php/lib/php/extensions/no-debug-non-zts-20121212/
+if [ $machine == "x86_64" ];then
+	wget http://zy-res.oss-cn-hangzhou.aliyuncs.com/php/zend/zend-loader-php5.5-linux-x86_64.tar.gz
+	tar zxvf zend-loader-php5.5-linux-x86_64.tar.gz
+	mv ./zend-loader-php5.5-linux-x86_64/ZendGuardLoader.so /alidata/server/php/lib/php/extensions/no-debug-non-zts-20121212/
+else
+    wget http://zy-res.oss-cn-hangzhou.aliyuncs.com/php/zend/zend-loader-php5.5-linux-i386.tar.gz
+	tar zxvf zend-loader-php5.5-linux-i386.tar.gz
+	mv ./zend-loader-php5.5-linux-i386/ZendGuardLoader.so /alidata/server/php/lib/php/extensions/no-debug-non-zts-20121212/
+fi
+echo "zend_extension=/alidata/server/php/lib/php/extensions/no-debug-non-zts-20121212/ZendGuardLoader.so" >> /alidata/server/php/etc/php.ini
+echo "zend_loader.enable=1" >> /alidata/server/php/etc/php.ini
+echo "zend_loader.disable_licensing=0" >> /alidata/server/php/etc/php.ini
+echo "zend_loader.obfuscation_level_support=3" >> /alidata/server/php/etc/php.ini
+echo "zend_loader.license_path=" >> /alidata/server/php/etc/php.ini
 sed -i 's#\[opcache\]#\[opcache\]\nzend_extension=opcache.so#' /data1/server/php/etc/php.ini
 sed -i 's#;opcache.enable=0#opcache.enable=1#' /data1/server/php/etc/php.ini
 

@@ -33,9 +33,9 @@ cd php-5.5.29
 --with-curl \
 --enable-ftp \
 --with-mcrypt  \
---with-freetype-dir=/usr/local/freetype.2.6 \
---with-jpeg-dir=/usr/local/jpeg.9 \
---with-png-dir=/usr/local/libpng.1.6.18 \
+--with-freetype-dir=/usr/local/freetype.2.1.10 \
+--with-jpeg-dir=/usr/local/jpeg.6b \
+--with-png-dir=/usr/local/libpng.1.2.53 \
 --disable-ipv6 \
 --disable-debug \
 --with-openssl \
