@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>LNMP by flarumone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">LNMP</h1>
+      <h2 class="project-tagline">Flarum 一键 LNMP 环境包</h2>
+      <a href="https://github.com/flarumone/lnmp" class="btn">View on GitHub</a>
+      <a href="https://github.com/flarumone/lnmp/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/flarumone/lnmp/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="欢迎使用-flarumone-一键-lnmp-环境包" class="anchor" href="#%E6%AC%A2%E8%BF%8E%E4%BD%BF%E7%94%A8-flarumone-%E4%B8%80%E9%94%AE-lnmp-%E7%8E%AF%E5%A2%83%E5%8C%85" aria-hidden="true"><span class="octicon octicon-link"></span></a>欢迎使用 FlarumOne 一键 LNMP 环境包</h1>
+
+<h4>
+<a id="welcome-to-flarumone-lnmp-a-key-environment-pack" class="anchor" href="#welcome-to-flarumone-lnmp-a-key-environment-pack" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to FlarumOne LNMP a key environment Pack</h4>
+
+<p>PhpMyAdmin 的默认管理入口是：<code>http://IP/phpmyadmin</code><br>
+FlarumOne 的首页入口是您绑定的域名。  </p>
+
+<p>PhpMyAdmin default login is:<code>http://IP/phpmyadmin</code><br>
+FlarumOne Home entrance that you bind the domain name.</p>
+
+<h3>
+<a id="安装菜单说明" class="anchor" href="#%E5%AE%89%E8%A3%85%E8%8F%9C%E5%8D%95%E8%AF%B4%E6%98%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装菜单说明</h3>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>注释</th>
+<th>可选值</th>
+<th>默认</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enter server IP manually? This maybe useful when you are setting local develop environment up</td>
+<td>是否手动指定服务器默认IP</td>
+<td><code>y/n</code></td>
+<td><code>n</code></td>
+<td>默认值<code>n</code>讲直接通过接口获取您服务器的IP，如果遇接口异常，将进入手工输入菜单，以确保访问正常</td>
+</tr>
+<tr>
+<td>Please select your server in mainland China</td>
+<td>选择服务器是否在中国大陆</td>
+<td><code>y/n</code></td>
+<td><code>n</code></td>
+<td>默认值<code>n</code>讲直接引用<code>AWS S3 US</code>亚马逊S3美国镜像，如果选<code>y</code>将进入<strong>国内<code>CDN</code>节点选择</strong>子菜单</td>
+</tr>
+<tr>
+<td>Please select a CDN node of SinaSAE/AliyunCDN</td>
+<td>国内<code>CDN</code>节点选择</td>
+<td><code>1/2</code></td>
+<td><code>1</code></td>
+<td>默认值<code>1</code>是新浪的SAE存储节点，<code>2</code>是阿里云的CDN节点</td>
+</tr>
+<tr>
+<td>Please Select whether you want to install MySQL</td>
+<td>是否安装<code>MySQL</code>数据库</td>
+<td><code>y/n</code></td>
+<td><code>y</code></td>
+<td>默认安装<code>MySQL</code>并进入<strong><code>MySQL</code>版本选择</strong>子菜单，你也可选择<code>n</code>不安装</td>
+</tr>
+<tr>
+<td>Please select the mysql version of 5.5.45/5.6.26</td>
+<td>
+<code>MySQL</code>版本选择</td>
+<td><code>1/2</code></td>
+<td><code>1</code></td>
+<td>默认安装<code>MySQL 5.5.45</code>，你也可以选择<code>2</code>以安装<code>MySQL 5.6.26</code>
+</td>
+</tr>
+<tr>
+<td>Please Select whether you want to install NodeJS</td>
+<td>是否安装<code>NodeJS</code>
+</td>
+<td><code>y/n</code></td>
+<td><code>n</code></td>
+<td>默认不安装，如果选择<code>y</code>讲进入<strong><code>NodeJS</code>版本选择</strong>子菜单</td>
+</tr>
+<tr>
+<td>Please select the NodeJS version of 0.12.7/4.0.0</td>
+<td>
+<code>NodeJS</code>版本选择</td>
+<td><code>1/2</code></td>
+<td><code>1</code></td>
+<td>默认安装<code>NodeJS 0.12.7</code>，你也可以选择<code>2</code>以安装<code>NodeJS 4.0.0</code>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="参考命令" class="anchor" href="#%E5%8F%82%E8%80%83%E5%91%BD%E4%BB%A4" aria-hidden="true"><span class="octicon octicon-link"></span></a>参考命令</h3>
+
+<p><strong>安装</strong></p>
+
+<div class="highlight highlight-source-shell"><pre>wget http://res.szlt.net/master/lnmp.zip -P /tmp
+<span class="pl-c1">cd</span> /usr/local/src
+unzip /tmp/lnmp.zip
+chmod -R 777 sh <span class="pl-k">&amp;&amp;</span> <span class="pl-c1">cd</span> sh
+./install.sh <span class="pl-k">2&gt;&amp;1</span> <span class="pl-k">|</span> tee install.log</pre></div>
+
+<p><strong>卸载</strong></p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c1">cd</span> /usr/local/src
+./uninstall.sh <span class="pl-k">2&gt;&amp;1</span> <span class="pl-k">|</span> tee uninstall.log</pre></div>
+
+<p><strong>重新安装</strong></p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c1">cd</span> /usr/local/src
+rm -rf sh
+rm /tmp/lnmp.zip
+wget http://res.szlt.net/master/lnmp.zip -P /tmp
+unzip /tmp/lnmp.zip
+chmod -R 777 sh <span class="pl-k">&amp;&amp;</span> <span class="pl-c1">cd</span> sh
+./install.sh <span class="pl-k">2&gt;&amp;1</span> <span class="pl-k">|</span> tee install.log</pre></div>
+
+<h3>
+<a id="常用管理命令" class="anchor" href="#%E5%B8%B8%E7%94%A8%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4" aria-hidden="true"><span class="octicon octicon-link"></span></a>常用管理命令</h3>
+
+<p>重启服务</p>
+
+<div class="highlight highlight-source-shell"><pre>/etc/init.d/php-fpm restart
+/etc/init.d/nginx restart
+/etc/init.d/mysqld restart</pre></div>
+
+<h3>
+<a id="帮助" class="anchor" href="#%E5%B8%AE%E5%8A%A9" aria-hidden="true"><span class="octicon octicon-link"></span></a>帮助</h3>
+
+<p>如遇问题，可将安装日志<code>/usr/local/src/sh/install.log</code>压缩成zip后发送到<code>support@flarumone.com</code>
+也可以到<strong>求助 - LNMP</strong>版块 <a href="https://flarumone.com/t/help">https://flarumone.com/t/help</a> 发帖求助</p>
+
+<h3>
+<a id="案例分享" class="anchor" href="#%E6%A1%88%E4%BE%8B%E5%88%86%E4%BA%AB" aria-hidden="true"><span class="octicon octicon-link"></span></a>案例分享</h3>
+
+<p>如果，您希望展示您的站点，也可把它发布到，我们的<strong>案例 - LNMP</strong>中 <a href="https://flarumone.com/t/case">https://flarumone.com/t/case</a></p>
+
+<p>谢谢大家的支持，么么哒</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/flarumone/lnmp">LNMP</a> is maintained by <a href="https://github.com/flarumone">flarumone</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
