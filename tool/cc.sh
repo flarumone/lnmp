@@ -9,8 +9,7 @@ if [ $(id -u) != "0" ]; then
 fi
 
 # Variables
-version=v0.1.0-bate.1
-foPath=/data1/www/flarumone
+version=v0.1.0-Beta.1
 
 echo "+---------------------------------------------------------------------------+"
 echo "|       Welcome to Flarum Clear Cache script, version: ${version}        |"
@@ -19,7 +18,8 @@ echo "|         For more information please visit https://flarunone.com         
 echo "+---------------------------------------------------------------------------+"
 
 # Check Flarum Path
-read -p "Please select your Flarum Path, input /data1/www/flarumone : " foPath
+read -p "Please input your Flarum Path, Default /data1/www/flarumone or input : " foPath
+foPath=${foPath:-'/data1/www/flarumone'}
 if [ ! -d "${foPath}/assets" ]; then
     echo "Error: Sorry, you are not an Flarum user, if you need help, please go to https://flarumone.com/t/lnmp"
     exit 1
