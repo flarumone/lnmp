@@ -24,7 +24,7 @@ install_log=/data1/website-info.log
 
 ####---- version selection ----begin####
 
-LNMP_Ver='0.1.0-Beta.2'
+LNMP_Ver='0.1.0-Beta.3'
 clear
 echo "+---------------------------------------------------------------------------+"
 echo "|        LNMP V${LNMP_Ver} for Linux Server, Written by FlarumOne          |"
@@ -130,7 +130,7 @@ if [ "$tmp" == "y" ] || [ "$tmp" == "Y" ];then
   if [ "$tmp" == "1" ];then
     nodejs_version=0.12.7
   elif [ "$tmp" == "2" ];then
-    nodejs_version=4.1.1
+    nodejs_version=4.2.1
   fi
 elif [ "$tmp" == "n" ] || [ "$tmp" == "N" ];then
   export isNodejs=no

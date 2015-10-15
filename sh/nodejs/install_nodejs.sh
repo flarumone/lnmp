@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ####---- install dependencies ----begin####
 if [ "$ifredhat" != "" ];then
@@ -44,7 +44,7 @@ fi
 
 ####---- install npm ----begin####
 curl -sS https://www.npmjs.com/install.sh | sh
-npm install --global gulp
+npm install -g gulp
 
 rm -rf composer.phar
 curl -sS https://getcomposer.org/installer | /data1/server/php/bin/php
