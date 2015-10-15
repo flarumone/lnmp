@@ -1,5 +1,12 @@
 # 更新日志
 
+## 2015-10-15
+### Fixed
+- 修复NodeJS在部分CentOs上安装错误
+
+### Update
+- 升级NodeJS到v4.2.1
+
 ## 2015-09-27
 ### Fixed
 - 降级PHP依赖jpg/png/freetype
