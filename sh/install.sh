@@ -24,7 +24,7 @@ install_log=/data1/website-info.log
 
 ####---- version selection ----begin####
 
-LNMP_Ver='0.1.0-Beta.3'
+LNMP_Ver='0.1.0-Beta.4'
 clear
 echo "+---------------------------------------------------------------------------+"
 echo "|        LNMP V${LNMP_Ver} for Linux Server, Written by FlarumOne          |"
