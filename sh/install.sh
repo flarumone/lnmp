@@ -126,7 +126,7 @@ read -p "Please Select whether you want to install NodeJS, input Y or N : " tmp
 if [ "$tmp" == "y" ] || [ "$tmp" == "Y" ];then
   export isNodejs=yes
   tmp=1
-  read -p "Please select the NodeJS version of 0.12.7/4.1.1, input 1 or 2 : " tmp
+  read -p "Please select the NodeJS version of 0.12.7/4.2.1, input 1 or 2 : " tmp
   if [ "$tmp" == "1" ];then
     nodejs_version=0.12.7
   elif [ "$tmp" == "2" ];then
