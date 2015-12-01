@@ -14,8 +14,8 @@ done
 
 ####---- global variables ----begin####
 export nginx_version=2.1.1
-export mysql_version=5.5.45
-export php_version=5.5.29
+export mysql_version=5.5.46
+export php_version=5.5.30
 export nodejs_version=0.12.7
 export phpmyadmin_version=4.4.12
 ####---- global variables ----end####
@@ -24,7 +24,7 @@ install_log=/data1/website-info.log
 
 ####---- version selection ----begin####
 
-LNMP_Ver='0.1.0-Beta.4'
+LNMP_Ver='0.1.0-Beta.5'
 clear
 echo "+---------------------------------------------------------------------------+"
 echo "|        LNMP V${LNMP_Ver} for Linux Server, Written by FlarumOne          |"
@@ -111,11 +111,11 @@ read -p "Please Select whether you want to install MySQL, input Y or N : " tmp
 if [ "$tmp" == "y" ] || [ "$tmp" == "Y" ];then
   export isMysql=yes
   tmp=1
-  read -p "Please select the mysql version of 5.5.45/5.6.26, input 1 or 2 : " tmp
+  read -p "Please select the mysql version of 5.5.46/5.6.27, input 1 or 2 : " tmp
   if [ "$tmp" == "1" ];then
-    mysql_version=5.5.45
+    mysql_version=5.5.46
   elif [ "$tmp" == "2" ];then
-    mysql_version=5.6.26
+    mysql_version=5.6.27
   fi
 elif [ "$tmp" == "n" ] || [ "$tmp" == "N" ];then
   export isMysql=no
@@ -126,11 +126,11 @@ read -p "Please Select whether you want to install NodeJS, input Y or N : " tmp
 if [ "$tmp" == "y" ] || [ "$tmp" == "Y" ];then
   export isNodejs=yes
   tmp=1
-  read -p "Please select the NodeJS version of 0.12.7/4.2.1, input 1 or 2 : " tmp
+  read -p "Please select the NodeJS version of 0.12.7/4.2.2, input 1 or 2 : " tmp
   if [ "$tmp" == "1" ];then
     nodejs_version=0.12.7
   elif [ "$tmp" == "2" ];then
-    nodejs_version=4.2.1
+    nodejs_version=4.2.2
   fi
 elif [ "$tmp" == "n" ] || [ "$tmp" == "N" ];then
   export isNodejs=no
@@ -267,16 +267,16 @@ echo "---------- make dir ok ----------" >> tmp.log
 echo "---------- env ok ----------" >> tmp.log
 
 if [ "$isMysql" == "yes" ];then
-	./mysql/install_${mysql_dir}.sh
+	./mysql/install_${mysql_dir%.*}.sh
 	echo "---------- ${mysql_dir} ok ----------" >> tmp.log
 fi
 
 ./nginx/install_nginx+php-${nginx_version}.sh
 echo "---------- ${web_dir} ok ----------" >> tmp.log
 if [ "$ifsuse" != "" ];then
-	./php/install_opensuse_nginx_php-${php_version}.sh
+	./php/install_opensuse_nginx_php-${php_version%.*}.sh
 else
-	./php/install_nginx_php-${php_version}.sh
+	./php/install_nginx_php-${php_version%.*}.sh
 fi
 echo "---------- ${php_dir} ok ----------" >> tmp.log
 

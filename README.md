@@ -13,9 +13,9 @@ FlarumOne Home entrance that you bind the domain name.
 `Please select your server in mainland China` | 选择服务器是否在中国大陆 | `y/n` | `n` | 默认值`n`讲直接引用`AWS S3 US`亚马逊S3美国镜像，如果选`y`将进入**国内`CDN`节点选择**子菜单
 `Please select a CDN node of SinaSAE/AliyunCDN` | 国内`CDN`节点选择 | `1/2` | `1` | 默认值`1`是新浪的SAE存储节点，`2`是阿里云的CDN节点
 `Please Select whether you want to install MySQL` | 是否安装`MySQL`数据库 | `y/n` | `y` | 默认安装`MySQL`并进入**`MySQL`版本选择**子菜单，你也可选择`n`不安装
-`Please select the mysql version of 5.5.45/5.6.26` | `MySQL`版本选择 | `1/2` | `1` | 默认安装`MySQL 5.5.45`，你也可以选择`2`以安装`MySQL 5.6.26`
+`Please select the mysql version of 5.5.46/5.6.27` | `MySQL`版本选择 | `1/2` | `1` | 默认安装`MySQL 5.5.46`，你也可以选择`2`以安装`MySQL 5.6.27`
 `Please Select whether you want to install NodeJS` | 是否安装`NodeJS` | `y/n` | `n` | 默认不安装，如果选择`y`讲进入**`NodeJS`版本选择**子菜单
-`Please select the NodeJS version of 0.12.7/4.2.1` | `NodeJS`版本选择 | `1/2` | `1` | 默认安装`NodeJS 0.12.7`，你也可以选择`2`以安装`NodeJS 4.2.1`
+`Please select the NodeJS version of 0.12.7/4.2.2` | `NodeJS`版本选择 | `1/2` | `1` | 默认安装`NodeJS 0.12.7`，你也可以选择`2`以安装`NodeJS 4.2.2`
 
 ### 参考命令
 **安装**
@@ -58,14 +58,14 @@ chmod -R 777 sh && cd sh
 │   ├── nginx
 │   └── php
 ├── server                                       #各服务的编译文件全放这里
-│   ├── mysql -> /data1/server/mysql-5.6.26      #这是个软链
-│   ├── mysql-5.6.26                             #这是实体文件夹
+│   ├── mysql -> /data1/server/mysql-5.6.27      #这是个软链
+│   ├── mysql-5.6.27                             #这是实体文件夹
 │   ├── nginx -> /data1/server/nginx-2.1.1
 │   ├── nginx-2.1.1
-│   ├── nodejs -> /data1/server/nodejs-4.1.2
-│   ├── nodejs-4.1.2
-│   ├── php -> /data1/server/php-5.5.29
-│   └── php-5.5.29
+│   ├── nodejs -> /data1/server/nodejs-4.2.2
+│   ├── nodejs-4.2.2
+│   ├── php -> /data1/server/php-5.5.30
+│   └── php-5.5.30
 └── www                                          #各网站的文件全放这里
     ├── default
     └── flarumone

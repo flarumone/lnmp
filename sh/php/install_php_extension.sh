@@ -1,13 +1,13 @@
 #!/bin/bash
 
 #imagemagick
-if [ ! -f ImageMagick.tar.gz ];then
-	wget ${cdn}/project/imagemagick/ImageMagick.tar.gz
+if [ ! -f ImageMagick-6.9.2-7.tar.gz ];then
+	wget ${cdn}/project/imagemagick/ImageMagick-6.9.2-7.tar.gz
 fi
-rm -rf ImageMagick-6.9.2-0
-tar -xzvf ImageMagick.tar.gz
-cd ImageMagick-6.9.2-0
-./configure --prefix=/usr/local/imagemagick
+rm -rf ImageMagick-6.9.2-7
+tar -xzvf ImageMagick-6.9.2-7.tar.gz
+cd ImageMagick-6.9.2-7
+./configure --prefix=/usr/local/imagemagick-6.9.2-7
 CPU_NUM=$(cat /proc/cpuinfo | grep processor | wc -l)
 if [ $CPU_NUM -gt 1 ];then
     make -j$CPU_NUM
@@ -25,7 +25,7 @@ rm -rf imagick-3.1.2
 tar -xzvf imagick-3.1.2.tgz
 cd imagick-3.1.2
 /data1/server/php/bin/phpize
-./configure --with-php-config=/data1/server/php/bin/php-config --with-imagick=/usr/local/imagemagick
+./configure --with-php-config=/data1/server/php/bin/php-config --with-imagick=/usr/local/imagemagick-6.9.2-7
 CPU_NUM=$(cat /proc/cpuinfo | grep processor | wc -l)
 if [ $CPU_NUM -gt 1 ];then
     make -j$CPU_NUM

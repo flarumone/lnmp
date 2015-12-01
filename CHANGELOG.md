@@ -1,5 +1,15 @@
 # 更新日志
 
+## 2015-12-1
+### Update
+- 更新 mysql 到 5.5.46/5.6.27
+- 更新 php 到 5.5.30
+- 更新 nodejs 到 4.2.2
+- 更新 freetype 到 2.6.2
+- 更新 ImageMagick 到 6.9.2-7
+- 更新 libmcrypt 到 2.5.8
+- 更新 libpng 到 1.2.54
+
 ## 2015-10-18
 ### ADD
 - 添加 WordPress 博客程序的 Nginx 配置实例

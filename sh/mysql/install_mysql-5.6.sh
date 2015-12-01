@@ -7,19 +7,19 @@ mysqlCDN=http://cdn.mysql.com/Downloads/MySQL-5.6
 fi
 
 if [ $machine == "x86_64" ];then
-  rm -rf mysql-5.6.26-linux-glibc2.5-x86_64
-  if [ ! -f mysql-5.6.26-linux-glibc2.5-x86_64.tar.gz ];then
-	 wget ${mysqlCDN}/mysql-5.6.26-linux-glibc2.5-x86_64.tar.gz
+  rm -rf mysql-${mysql_version}-linux-glibc2.5-x86_64
+  if [ ! -f mysql-${mysql_version}-linux-glibc2.5-x86_64.tar.gz ];then
+	 wget ${mysqlCDN}/mysql-${mysql_version}-linux-glibc2.5-x86_64.tar.gz
   fi
-  tar -xzvf mysql-5.6.26-linux-glibc2.5-x86_64.tar.gz
-  mv mysql-5.6.26-linux-glibc2.5-x86_64/* /data1/server/mysql
+  tar -xzvf mysql-${mysql_version}-linux-glibc2.5-x86_64.tar.gz
+  mv mysql-${mysql_version}-linux-glibc2.5-x86_64/* /data1/server/mysql
 else
-  rm -rf mysql-5.6.26-linux-glibc2.5-i686
-  if [ ! -f mysql-5.6.26-linux-glibc2.5-i686.tar.gz ];then
-  wget ${mysqlCDN}/mysql-5.6.26-linux-glibc2.5-i686.tar.gz
+  rm -rf mysql-${mysql_version}-linux-glibc2.5-i686
+  if [ ! -f mysql-${mysql_version}-linux-glibc2.5-i686.tar.gz ];then
+  wget ${mysqlCDN}/mysql-${mysql_version}-linux-glibc2.5-i686.tar.gz
   fi
-  tar -xzvf mysql-5.6.26-linux-glibc2.5-i686.tar.gz
-  mv mysql-5.6.26-linux-glibc2.5-i686/* /data1/server/mysql
+  tar -xzvf mysql-${mysql_version}-linux-glibc2.5-i686.tar.gz
+  mv mysql-${mysql_version}-linux-glibc2.5-i686/* /data1/server/mysql
 fi
 
 if [ "$ifubuntu" != "" ] && [ "$if14" != "" ];then

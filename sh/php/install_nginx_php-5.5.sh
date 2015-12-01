@@ -1,10 +1,10 @@
 #!/bin/bash
-rm -rf php-5.5.29
-if [ ! -f php-5.5.29.tar.gz ];then
-  wget ${cdn}/project/php/php-5.5.29.tar.gz
+rm -rf php-5.5.30
+if [ ! -f php-5.5.30.tar.gz ];then
+  wget ${cdn}/project/php/php-5.5.30.tar.gz
 fi
-tar zxvf php-5.5.29.tar.gz
-cd php-5.5.29
+tar zxvf php-5.5.30.tar.gz
+cd php-5.5.30
 ./configure --prefix=/data1/server/php \
 --enable-opcache \
 --with-config-file-path=/data1/server/php/etc \
@@ -30,9 +30,9 @@ cd php-5.5.29
 --with-curl \
 --enable-ftp \
 --with-mcrypt  \
---with-freetype-dir=/usr/local/freetype.2.1.10 \
+--with-freetype-dir=/usr/local/freetype.2.6.2 \
 --with-jpeg-dir=/usr/local/jpeg.6b \
---with-png-dir=/usr/local/libpng.1.2.53 \
+--with-png-dir=/usr/local/libpng.1.2.54 \
 --disable-ipv6 \
 --disable-debug \
 --with-openssl \
@@ -47,7 +47,7 @@ else
 fi
 make install
 cd ..
-cp ./php-5.5.29/php.ini-production /data1/server/php/etc/php.ini
+cp ./php-5.5.30/php.ini-production /data1/server/php/etc/php.ini
 #adjust php.ini
 sed -i 's#; extension_dir = \"\.\/\"#extension_dir = "/data1/server/php/lib/php/extensions/no-debug-non-zts-20121212/"#'  /data1/server/php/etc/php.ini
 sed -i 's/post_max_size = 8M/post_max_size = 64M/g' /data1/server/php/etc/php.ini
@@ -67,6 +67,6 @@ sed -i 's,;pid = run/php-fpm.pid,pid = run/php-fpm.pid,g'   /data1/server/php/et
 sed -i 's,;error_log = log/php-fpm.log,error_log = /data1/log/php/php-fpm.log,g'   /data1/server/php/etc/php-fpm.conf
 sed -i 's,;slowlog = log/$pool.log.slow,slowlog = /data1/log/php/\$pool.log.slow,g'   /data1/server/php/etc/php-fpm.conf
 #self start
-install -v -m755 ./php-5.5.29/sapi/fpm/init.d.php-fpm  /etc/init.d/php-fpm
+install -v -m755 ./php-5.5.30/sapi/fpm/init.d.php-fpm  /etc/init.d/php-fpm
 /etc/init.d/php-fpm start
 sleep 5

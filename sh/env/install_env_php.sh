@@ -35,13 +35,13 @@ fi
 make install
 cd ..
 
-if [ ! -f freetype-2.1.10.tar.gz ];then
-	wget ${cdn}/project/freetype/freetype-2.1.10.tar.gz
+if [ ! -f freetype-2.6.2.tar.gz ];then
+	wget ${cdn}/project/freetype/freetype-2.6.2.tar.gz
 fi
-rm -rf freetype-2.1.10
-tar zxvf freetype-2.1.10.tar.gz
-cd freetype-2.1.10
-./configure --prefix=/usr/local/freetype.2.1.10
+rm -rf freetype-2.6.2
+tar zxvf freetype-2.6.2.tar.gz
+cd freetype-2.6.2
+./configure --prefix=/usr/local/freetype.2.6.2
 if [ $CPU_NUM -gt 1 ];then
     make -j$CPU_NUM
 else
@@ -50,13 +50,13 @@ fi
 make install
 cd ..
 
-if [ ! -f libpng-1.2.53.tar.gz ];then
-    wget ${cdn}/project/libpng/libpng-1.2.53.tar.gz
+if [ ! -f libpng-1.2.54.tar.gz ];then
+    wget ${cdn}/project/libpng/libpng-1.2.54.tar.gz
 fi
-rm -rf libpng-1.2.53
-tar zxvf libpng-1.2.53.tar.gz
-cd libpng-1.2.53
-./configure --prefix=/usr/local/libpng.1.2.53
+rm -rf libpng-1.2.54
+tar zxvf libpng-1.2.54.tar.gz
+cd libpng-1.2.54
+./configure --prefix=/usr/local/libpng.1.2.54
 if [ $CPU_NUM -gt 1 ];then
     make CFLAGS=-fpic -j$CPU_NUM
 else
@@ -80,12 +80,12 @@ fi
 make install
 cd ..
 
-if [ ! -f libmcrypt-2.5.7.tar.gz ];then
-	wget ${cdn}/project/libmcrypt/libmcrypt-2.5.7.tar.gz
+if [ ! -f libmcrypt-2.5.8.tar.gz ];then
+	wget ${cdn}/project/libmcrypt/libmcrypt-2.5.8.tar.gz
 fi
-rm -rf libmcrypt-2.5.7
-tar zxvf libmcrypt-2.5.7.tar.gz
-cd libmcrypt-2.5.7
+rm -rf libmcrypt-2.5.8
+tar zxvf libmcrypt-2.5.8.tar.gz
+cd libmcrypt-2.5.8
 ./configure --disable-posix-threads
 if [ $CPU_NUM -gt 1 ];then
     make -j$CPU_NUM
@@ -131,7 +131,7 @@ cp -f /usr/share/libtool/config.sub .
 elif [ -e /usr/share/libtool/config/config.sub ];then
 cp -f /usr/share/libtool/config/config.sub .
 fi
-./configure --prefix=/usr/local/jpeg.6 --enable-shared --enable-static
+./configure --prefix=/usr/local/jpeg.6b --enable-shared --enable-static
 mkdir -p /usr/local/jpeg.6b/include
 mkdir /usr/local/jpeg.6b/lib
 mkdir /usr/local/jpeg.6b/bin
