@@ -28,7 +28,7 @@ if [ ! -d 'modules' ];then
     mkdir modules
 fi
 cd modules
-for modules in article banned comment content editor forum google_chart highcharts mall message og page pchart phpExcel solr solr_stats test voteapi weibo; do
+for modules in article banned comment content domain editor forum google_chart highcharts mall message og page pchart phpExcel solr solr_stats test voteapi weibo; do
   if [ ! -d ${modules} ];then
     mkdir ${modules}
   fi
