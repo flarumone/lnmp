@@ -11,7 +11,7 @@ echo "+-------------------------------------------------------------------------
 IsInstallSVN=Y
 read -p "Have SVN been installed? Enter the Y or N to continue:" IsInstallSVN
 if [ "${IsInstallSVN}" != "y" ] && [ "${IsInstallSVN}" != "Y" ];then
-  echo "Goodbye!"
+  echo -e "Please install SVN and try again \n apt-get install subversion | yum install subversion \nGoodbye!"
   exit 1
 fi
 
@@ -60,6 +60,7 @@ find . -type f -exec chmod 0644 {} +
 chmod 0775 .
 chmod -R 0775 sites/logs sites/default/cache sites/default/files
 cd ..
+chown -R www:www dida-release
 tar czf dida-release.tar.gz dida-release
-ll
+ls -l
 echo 'Build success!'
