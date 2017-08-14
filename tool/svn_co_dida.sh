@@ -28,7 +28,7 @@ if [ ! -d 'modules' ];then
     mkdir modules
 fi
 cd modules
-for modules in article banned comment content domain editor forum google_chart highcharts mall message og page pchart phpExcel solr solr_stats test voteapi weibo weixin; do
+for modules in article banned comment content domain editor forum google_chart highcharts mall message og page pchart phpExcel qrcode solr solr_stats test voteapi weibo weixin; do
   if [ ! -d ${modules} ];then
     mkdir ${modules}
   fi
@@ -60,6 +60,7 @@ find . -type f -exec chmod 0644 {} +
 chmod 0775 .
 chmod -R 0775 sites/logs sites/default/cache sites/default/files
 cd ..
+chown -R nobody:nobody dida-release
 tar czf dida-release.tar.gz dida-release
 ls -l
 echo 'Build success!'
